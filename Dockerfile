@@ -19,12 +19,12 @@ COPY ./ ./
 # Build app
 RUN npm run build
 
-# Expose the listening port
-EXPOSE 3000
-
 # Run container as non-root (unprivileged) user
 # The "node" user is provided in the Node.js Alpine base image
 USER node
+
+# Expose the listening port
+EXPOSE 3000
 
 # Launch app with PM2
 CMD [ "pm2-runtime", "start", "npm", "--", "start" ]
